@@ -1,15 +1,22 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
-
+#include <stdlib.h>
 /*
- * Numbers associated with keys
+ * Numbers associated with arrow keys
  * */
 #define UP 72
 #define LEFT 75
 #define RIGHT 77
 #define DOWN 80
 #define ESC 27
+
+int body[200][2];
+int n = 1;
+int size = 3;
+char key;
+int x = 10;
+int y = 12;
 
 void gotoxy(int x, int y) {
     HANDLE hCon;
@@ -54,8 +61,23 @@ void border() {
     printf("%c", 188);
 }
 
+void saveNewPosition(){
+//    This is the snake head
+    body[n][0] = x;
+    body[n][1] = y;
+    n++;
+    if (n == size){
+        n = 1;
+    }
+}
+
 int main() {
 //    system("pause");
+    while (key != ESC){
+        //deleteBody();
+        saveNewPosition();
+        //paintBody();
+    }
     border();
     return 0;
 }
